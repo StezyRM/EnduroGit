@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnduroGit — Подбор по характеристикам</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" style="color: #ffdd57; text-decoration: none; margin-bottom: 20px; display: inline-block;">
+            ← Вернуться на главную
+        </a>
+
+      <section class="filters-section">
+    <div class="filters-card">
+        <h2><i class="fas fa-sliders-h"></i> Фильтры и сортировка</h2>
+
+        <!-- Цена: от и до -->
+        <div class="filter-group">
+            <label><i class="fas fa-ruble-sign"></i> Цена (₽)</label>
+            <div class="price-range">
+                <input type="number" id="priceFrom" class="filter-input short" placeholder="От">
+                <span> — </span>
+                <input type="number" id="priceTo" class="filter-input short" placeholder="До">
+            </div>
+        </div>
+
+        <!-- Объём двигателя -->
+        <div class="filter-group">
+            <label><i class="fas fa-cubes"></i> Объём двигателя (см³)</label>
+            <div class="custom-select-container">
+                <div class="custom-select" onclick="toggleDropdown('engineDropdown')">
+                    <span id="engineLabel">Любой</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="engineDropdown" class="dropdown-menu">
+                    <div class="dropdown-item" data-value="" onclick="selectOption(this, 'engineLabel', 'engineSelect')">Любой</div>
+                    <div class="dropdown-item" data-value="250" onclick="selectOption(this, 'engineLabel', 'engineSelect')">250 см³</div>
+                    <div class="dropdown-item" data-value="300" onclick="selectOption(this, 'engineLabel', 'engineSelect')">300 см³</div>
+                    <div class="dropdown-item" data-value="350" onclick="selectOption(this, 'engineLabel', 'engineSelect')">350 см³</div>
+                </div>
+            </div>
+            <input type="hidden" id="engineSelect" value="">
+        </div>
+
+        <!-- Тип двигателя -->
+        <div class="filter-group">
+            <label><i class="fas fa-fire"></i> Тип двигателя</label>
+            <div class="custom-select-container">
+                <div class="custom-select" onclick="toggleDropdown('engineTypeDropdown')">
+                    <span id="engineTypeLabel">Любой</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="engineTypeDropdown" class="dropdown-menu">
+                    <div class="dropdown-item" data-value="" onclick="selectOption(this, 'engineTypeLabel', 'engineType')">Любой</div>
+                    <div class="dropdown-item" data-value="2t" onclick="selectOption(this, 'engineTypeLabel', 'engineType')">2-тактный</div>
+                    <div class="dropdown-item" data-value="4t" onclick="selectOption(this, 'engineTypeLabel', 'engineType')">4-тактный</div>
+                </div>
+            </div>
+            <input type="hidden" id="engineType" value="">
+        </div>
+
+        <!-- Сортировка -->
+        <div class="filter-group">
+            <label><i class="fas fa-sort"></i> Сортировать по</label>
+            <div class="custom-select-container">
+                <div class="custom-select" onclick="toggleDropdown('sortDropdown')">
+                    <span id="sortLabel">По умолчанию</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="sortDropdown" class="dropdown-menu">
+                    <div class="dropdown-item" data-value="default" onclick="selectOption(this, 'sortLabel', 'sortSelect')">По умолчанию</div>
+                    <div class="dropdown-item" data-value="price-asc" onclick="selectOption(this, 'sortLabel', 'sortSelect')">Цена: по возрастанию</div>
+                    <div class="dropdown-item" data-value="price-desc" onclick="selectOption(this, 'sortLabel', 'sortSelect')">Цена: по убыванию</div>
+                    <div class="dropdown-item" data-value="engine-asc" onclick="selectOption(this, 'sortLabel', 'sortSelect')">Объём: по возрастанию</div>
+                    <div class="dropdown-item" data-value="engine-desc" onclick="selectOption(this, 'sortLabel', 'sortSelect')">Объём: по убыванию</div>
+                </div>
+            </div>
+            <input type="hidden" id="sortSelect" value="default">
+        </div>
+
+        <button id="applyFilters" class="btn-primary">
+            <i class="fas fa-search"></i> Подобрать
+        </button>
+        <button id="resetFilters" class="btn-secondary">
+            <i class="fas fa-eraser"></i> Сбросить
+        </button>
+    </div>
+</section>
+
+        <section class="results-section" id="results">
+            <!-- Сюда будут подставляться карточки -->
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Модальное окно -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
+</body>
+</html>
