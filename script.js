@@ -37,7 +37,7 @@ const motorcycles = [
         engine: 300,
         power: 26,
         engineType: "4t",
-        dealerLink: "https://regulmoto.ru/catalog/mototekhnika/mototsikly_regulmoto/27275/?oid=27276&ysclid=mgawc45w7s358241222#",
+        dealerLink: "https://regulmoto.ru/catalog/mototekhnika/mototsikly_regulmoto/enduro_mototsikly_regulmoto/27275/?oid=27276",
         images: [
             "images/hsot1.jpg",
             "images/hsot2.jpg",
